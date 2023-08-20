@@ -1,16 +1,14 @@
 module.exports = function toReadable (number) {
-    let numberSmall = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    let numberRound = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'thousand'];
+    const numberSmall = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    const numberRound = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'thousand'];
     let humanReadable = 'zero';
-    let numberLength = toString(number).length;
-        console.log('numberLength = '+numberLength);
     if (number < 20) { 
         humanReadable = numberSmall[number-1]; 
     }
     else 
-        if (toString(number).length == 2 ) {
-            let firstSymbol = +toString(number).slice(0, 1);
-            let lastSymbol = +toString(number).slice(-1);
+        if (number.toString().length == 2 ) {
+            let firstSymbol = +number.toString().slice(0, 1);
+            let lastSymbol = +number.toString().slice(-1);
             if (lastSymbol == 0) {
                 humanReadable = numberRound[firstSymbol - 2];
             }
@@ -19,10 +17,10 @@ module.exports = function toReadable (number) {
             }
         }
         else
-            if (toString(number).length == 3) {
-                let firstSymbol = +toString(number).slice(0, 1);
-                let middleSymbol =  +toString(number).slice(1, 2);
-                let lastSymbol = +toString(number).slice(-1);
+            if (number.toString().length == 3) {
+                let firstSymbol = +number.toString().slice(0, 1);
+                let middleSymbol =  +number.toString().slice(1, 2);
+                let lastSymbol = +number.toString().slice(-1);
                 if (lastSymbol == 0) {
                     humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
                 }
