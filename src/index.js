@@ -21,12 +21,13 @@ module.exports = function toReadable (number) {
                 let firstSymbol = +number.toString().slice(0, 1);
                 let middleSymbol =  +number.toString().slice(1, 2);
                 let lastSymbol = +number.toString().slice(-1);
+                let twoLastSymbol = +number.toString().slice(-2);
                 if (lastSymbol == 0) {
                     humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
                 }
                 else 
                     if (middleSymbol == 0 || middleSymbol == 1) {
-                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberSmall[lastSymbol - 1];
+                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberSmall[twoLastSymbol - 1];
                     }
                     else {
                         humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1] + ' ' + numberSmall[lastSymbol - 1];
