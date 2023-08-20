@@ -1,9 +1,9 @@
 module.exports = function toReadable (number) {
-    const numberSmall = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    const numberSmall = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
     const numberRound = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'thousand'];
     let humanReadable = 'zero';
     if (number < 20) { 
-        humanReadable = numberSmall[number-1]; 
+        humanReadable = numberSmall[number]; 
     }
     else 
         if (number.toString().length == 2 ) {
@@ -13,7 +13,7 @@ module.exports = function toReadable (number) {
                 humanReadable = numberRound[firstSymbol - 1];
             }
             else {
-                humanReadable = numberRound[firstSymbol - 1] + ' ' + numberSmall[lastSymbol - 1];
+                humanReadable = numberRound[firstSymbol - 1] + ' ' + numberSmall[lastSymbol];
             }
         }
         else
@@ -24,16 +24,16 @@ module.exports = function toReadable (number) {
                 let twoLastSymbol = +number.toString().slice(-2);
                 if (lastSymbol == 0) {
                     if (middleSymbol == 0) {
-                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred';
+                        humanReadable = numberSmall[firstSymbol] + ' hundred';
                     }
-                    else humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
+                    else humanReadable = numberSmall[firstSymbol] + ' hundred ' + numberRound[middleSymbol - 1];
                 }
                 else 
                     if (middleSymbol == 0 || middleSymbol == 1) {
-                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberSmall[twoLastSymbol - 1];
+                        humanReadable = numberSmall[firstSymbol] + ' hundred ' + numberSmall[twoLastSymbol];
                     }
                     else {
-                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1] + ' ' + numberSmall[lastSymbol - 1];
+                        humanReadable = numberSmall[firstSymbol] + ' hundred ' + numberRound[middleSymbol - 1] + ' ' + numberSmall[lastSymbol];
                     }
             }
     return humanReadable;
