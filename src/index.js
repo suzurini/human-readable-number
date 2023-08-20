@@ -10,7 +10,7 @@ module.exports = function toReadable (number) {
             let firstSymbol = +number.toString().slice(0, 1);
             let lastSymbol = +number.toString().slice(-1);
             if (lastSymbol == 0) {
-                humanReadable = numberRound[firstSymbol - 2];
+                humanReadable = numberRound[firstSymbol - 1];
             }
             else {
                 humanReadable = numberRound[firstSymbol - 1] + ' ' + numberSmall[lastSymbol - 1];
