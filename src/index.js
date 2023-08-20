@@ -23,7 +23,10 @@ module.exports = function toReadable (number) {
                 let lastSymbol = +number.toString().slice(-1);
                 let twoLastSymbol = +number.toString().slice(-2);
                 if (lastSymbol == 0) {
-                    humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
+                    if (middleSymbol == 0) {
+                        humanReadable = numberSmall[firstSymbol - 1] + ' hundred';
+                    }
+                    else humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
                 }
                 else 
                     if (middleSymbol == 0 || middleSymbol == 1) {
