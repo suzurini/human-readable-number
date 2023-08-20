@@ -25,7 +25,7 @@ module.exports = function toReadable (number) {
                     humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberRound[middleSymbol - 1];
                 }
                 else 
-                    if (middleSymbol == 0) {
+                    if (middleSymbol == 0 || middleSymbol == 1) {
                         humanReadable = numberSmall[firstSymbol - 1] + ' hundred ' + numberSmall[lastSymbol - 1];
                     }
                     else {
